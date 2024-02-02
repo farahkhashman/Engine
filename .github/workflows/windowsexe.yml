@@ -35,8 +35,8 @@ jobs:
         path: D:\a\Engine\Engine\build\App\ore.exe
 
     - name: Save build directory as artifacts
-    - uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v4
       with:
         name: ore_build
-        path: D:\a\Engine\Engine\build\
+        path: D:\a\Engine\Engine\build
     
