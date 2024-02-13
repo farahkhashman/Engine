@@ -42,5 +42,7 @@ jobs:
       #if: startsWith(github.ref, 'refs/tags/v')
       uses: actions/upload-artifact@v3
       with:
-        name: ore-exe-linux
-        path: /home/runner/work/Engine/Engine/build
+        name: ore-linux
+        path: |
+          /home/runner/work/Engine/Engine/build/App/ore
+          /home/runner/work/Engine/Engine/build/**/*.so
