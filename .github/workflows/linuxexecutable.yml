@@ -43,4 +43,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: ore-exe-linux
-        path: /home/runner/work/Engine/Engine/build/App/ore
+        path: /home/runner/work/Engine/Engine/build
