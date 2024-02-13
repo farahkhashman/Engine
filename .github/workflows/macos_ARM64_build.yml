@@ -47,4 +47,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: ore-exe-macos-arm64
-        path: /Users/runner/work/Engine/Engine/build/App/ore
+        path: /Users/runner/work/Engine/Engine/build/
