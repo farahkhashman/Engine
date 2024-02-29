@@ -31,6 +31,7 @@
 #include <ored/configuration/volatilityconfig.hpp>
 #include <ored/configuration/yieldcurveconfig.hpp>
 #include <ored/configuration/yieldvolcurveconfig.hpp>
+#include <ored/marketdata/adjustedinmemoryloader.hpp>
 #include <ored/marketdata/adjustmentfactors.hpp>
 #include <ored/marketdata/basecorrelationcurve.hpp>
 #include <ored/marketdata/capfloorvolcurve.hpp>
@@ -199,6 +200,7 @@
 #include <ored/portfolio/cbo.hpp>
 #include <ored/portfolio/cdo.hpp>
 #include <ored/portfolio/cliquetoption.hpp>
+#include <ored/portfolio/collateralbalance.hpp>
 #include <ored/portfolio/commodityapo.hpp>
 #include <ored/portfolio/commoditydigitalapo.hpp>
 #include <ored/portfolio/commoditydigitaloption.hpp>
@@ -344,6 +346,7 @@
 #include <ored/scripting/models/blackscholescgbase.hpp>
 #include <ored/scripting/models/dummymodel.hpp>
 #include <ored/scripting/models/fdblackscholesbase.hpp>
+#include <ored/scripting/models/fdgaussiancam.hpp>
 #include <ored/scripting/models/gaussiancam.hpp>
 #include <ored/scripting/models/gaussiancamcg.hpp>
 #include <ored/scripting/models/hwcg.hpp>

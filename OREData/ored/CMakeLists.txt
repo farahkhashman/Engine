@@ -22,6 +22,7 @@ configuration/onedimsolverconfig.cpp
 configuration/reportconfig.cpp
 configuration/volatilityconfig.cpp
 configuration/yieldcurveconfig.cpp
+marketdata/adjustedinmemoryloader.cpp
 marketdata/adjustmentfactors.cpp
 marketdata/basecorrelationcurve.cpp
 marketdata/capfloorvolcurve.cpp
@@ -183,6 +184,7 @@ portfolio/capfloor.cpp
 portfolio/cbo.cpp
 portfolio/cdo.cpp
 portfolio/cliquetoption.cpp
+portfolio/collateralbalance.cpp
 portfolio/commodityapo.cpp
 portfolio/commoditydigitalapo.cpp
 portfolio/commoditydigitaloption.cpp
@@ -295,6 +297,7 @@ portfolio/varianceswap.cpp
 portfolio/windowbarrieroption.cpp
 portfolio/worstofbasketswap.cpp
 report/csvreport.cpp
+report/inmemoryreport.cpp
 scripting/ast.cpp
 scripting/astprinter.cpp
 scripting/astresetter.cpp
@@ -316,6 +319,7 @@ scripting/models/blackscholesbase.cpp
 scripting/models/blackscholescg.cpp
 scripting/models/blackscholescgbase.cpp
 scripting/models/fdblackscholesbase.cpp
+scripting/models/fdgaussiancam.cpp
 scripting/models/gaussiancam.cpp
 scripting/models/gaussiancamcg.cpp
 scripting/models/hwcg.cpp
@@ -389,6 +393,7 @@ configuration/swaptionvolcurveconfig.hpp
 configuration/volatilityconfig.hpp
 configuration/yieldcurveconfig.hpp
 configuration/yieldvolcurveconfig.hpp
+marketdata/adjustedinmemoryloader.hpp
 marketdata/adjustmentfactors.hpp
 marketdata/basecorrelationcurve.hpp
 marketdata/capfloorvolcurve.hpp
@@ -557,6 +562,7 @@ portfolio/capfloor.hpp
 portfolio/cbo.hpp
 portfolio/cdo.hpp
 portfolio/cliquetoption.hpp
+portfolio/collateralbalance.hpp
 portfolio/commodityapo.hpp
 portfolio/commoditydigitalapo.hpp
 portfolio/commoditydigitaloption.hpp
@@ -702,6 +708,7 @@ scripting/models/blackscholescg.hpp
 scripting/models/blackscholescgbase.hpp
 scripting/models/dummymodel.hpp
 scripting/models/fdblackscholesbase.hpp
+scripting/models/fdgaussiancam.hpp
 scripting/models/gaussiancam.hpp
 scripting/models/gaussiancamcg.hpp
 scripting/models/hwcg.hpp
