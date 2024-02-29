@@ -36,6 +36,11 @@ jobs:
             boost-lib: 64
     steps:
     - uses: actions/checkout@v3
+      with:
+          fetch-depth: 0
+    - name: checkout version 11
+      run: |
+        git checkout tags/v1.8.11.0
     - name: get QuantLib
       run: |
         git submodule update --init
