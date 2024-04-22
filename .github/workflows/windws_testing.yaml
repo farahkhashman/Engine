@@ -73,3 +73,8 @@ jobs:
       - name: run OREAnalytics tests
         run: |
           .\test-suites\OREAnalytics\test\orea-test-suite.exe
+      - name: Delete test suite artifacts
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: test-suites
+          failOnError: false
