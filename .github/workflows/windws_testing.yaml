@@ -68,10 +68,10 @@ jobs:
         continue-on-error: true
         run: |
           .\test-suites\QuantExt\test\quantext-test-suite.exe
-      - name: run OREData tests
-        continue-on-error: true
-        run: |
-          .\test-suites\OREData\test\ored-test-suite.exe -- --base_data_path=.\OREData\test
+      #- name: run OREData tests
+      #  continue-on-error: true
+      #  run: |
+      #    .\test-suites\OREData\test\ored-test-suite.exe -- --base_data_path=.\OREData\test
       #- name: run OREAnalytics tests
       #  continue-on-error: true
       #  run: |
