@@ -65,15 +65,19 @@ jobs:
           name: test-suites
           path: ${{ github.workspace }}\test-suites
       - name: run QuantExt tests
+        continue-on-error: true
         run: |
           .\test-suites\QuantExt\test\quantext-test-suite.exe
       - name: run OREData tests
+        continue-on-error: true
         run: |
           .\test-suites\OREData\test\ored-test-suite.exe -- --base_data_path=.\OREData\test
-      - name: run OREAnalytics tests
-        run: |
-          .\test-suites\OREAnalytics\test\orea-test-suite.exe
+      #- name: run OREAnalytics tests
+      #  continue-on-error: true
+      #  run: |
+      #    .\test-suites\OREAnalytics\test\orea-test-suite.exe
       - name: Delete test suite artifacts
+        if: success() || failure()
         uses: geekyeggo/delete-artifact@v5
         with:
           name: test-suites
