@@ -1,26 +1,6 @@
 name: C/C++ CI Ubuntu
 
 on:
-  push:
-    branches: [master]
-    tags:
-       - 'v*'
-  release:
-   types: [published]
-  pull_request:
-    branches: [master]
-    types: [ready_for_review, opened, synchronize, reopened]
-    paths:
-      - .github/workflows/linux_build.yaml
-      - ./App/**
-      - ./OREAnalytics/**
-      - '!./OREAnalytics/doc/**'
-      - ./OREData/**
-      - '!./OREData/doc/**'
-      - ./ORETest/**
-      - ./QuantExt/**
-      - '!./QuantExt/doc/**'
-      - CMakeLists.txt
   workflow_dispatch:
 
 jobs:
