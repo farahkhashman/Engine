@@ -65,11 +65,11 @@ jobs:
         mkdir build
         cd build
         SET ZLIB_ROOT=C:\local\zlib-1.3.1
-        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Vc\Auxiliary\Build\vcvarsall.bat" ${{ matrix.arch }} -vcvars_ver=14.3 || exit 1
-        cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DQL_BUILD_EXAMPLES=false -DQL_BUILD_TEST_SUITE=false -DQL_BUILD_BENCHMARK=false -DQL_ENABLE_SESSIONS=true -DORE_USE_ZLIB=ON -DORE_BUILD_DOC=false -DBOOST_INCLUDEDIR=C:\local\boost -DZLIB_LIBRARY=C:\local\zlib-1.3.1\build\Release\zlib.lib -DBOOST_LIBRARYDIR=C:\local\boost\lib64-msvc-14.3 -L
+        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Vc\Auxiliary\Build\vcvarsall.bat" ${{ matrix.arch }} -vcvars_ver=14.2 || exit 1
+        cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DQL_BUILD_EXAMPLES=false -DQL_BUILD_TEST_SUITE=false -DQL_BUILD_BENCHMARK=false -DQL_ENABLE_SESSIONS=true -DORE_USE_ZLIB=ON -DORE_BUILD_DOC=false -DBOOST_INCLUDEDIR=C:\local\boost -DZLIB_LIBRARY=C:\local\zlib-1.3.1\build\Release\zlib.lib -DBOOST_LIBRARYDIR=C:\local\boost\lib64-msvc-14.2 -L
         cmake --build . -j 2 --verbose
     - name: Save executables as artifacts
-      if: startsWith(github.ref, 'refs/tags/v')
+      #if: startsWith(github.ref, 'refs/tags/v')
       uses: actions/upload-artifact@v4
       with:
         name: ore-windows-${{ matrix.arch }}
