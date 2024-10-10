@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-12
+    runs-on: macos-13
     steps:
     - uses: actions/checkout@v4
     - name: get QuantLib
@@ -13,11 +13,10 @@ jobs:
         git submodule update --init
     - name: Install Boost
       run: |
-        curl -O -L https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz
-        tar xfz boost_1_80_0.tar.gz
-        cd boost_1_80_0
-        ./bootstrap.sh
-        ./b2 architecture=arm address-model=64 -s NO_LZMA=1 -s NO_ZSTD=1 abi=aapcs install
+        brew install boost
+        cd /usr/local/lib
+        ln -s libboost_thread-mt.dylib libboost_thread.dylib
+        ln -s libboost_thread-mt.a libboost_thread.a
     - name: cmake configure and build
       run: |
         mkdir build
