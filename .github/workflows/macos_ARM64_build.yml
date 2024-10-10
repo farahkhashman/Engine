@@ -13,10 +13,11 @@ jobs:
         git submodule update --init
     - name: Install Boost
       run: |
-        brew install boost
-        cd /usr/local/lib
-        ln -s libboost_thread-mt.dylib libboost_thread.dylib
-        ln -s libboost_thread-mt.a libboost_thread.a
+        curl -O -L https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_1_84_0.tar.gz
+        tar xfz boost_1_84_0.tar.gz
+        cd boost_1_84_0
+        ./bootstrap.sh
+        ./b2 architecture=arm address-model=64 -s NO_LZMA=1 -s NO_ZSTD=1 abi=aapcs install
     - name: cmake configure and build
       run: |
         mkdir build
