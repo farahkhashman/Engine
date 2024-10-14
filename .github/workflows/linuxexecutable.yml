@@ -38,6 +38,7 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/v')
       uses: softprops/action-gh-release@v2
       with:
+        name: ${{ github.ref_name }}
         files: /home/runner/work/Engine/Engine/build/App/ore-linux
       env:
         GITHUB_TOKEN: ${{ secrets.UPLOAD_RELEASE }}
