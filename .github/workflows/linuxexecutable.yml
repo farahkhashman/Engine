@@ -32,10 +32,12 @@ jobs:
       with:
         name: ore-linux
         path: /home/runner/work/Engine/Engine/build/App/ore
+    - name: Rename executable to match system
+      run: mv "/home/runner/work/Engine/Engine/build/App/ore" "/home/runner/work/Engine/Engine/build/App/ore-linux"
     - name: Release executables to tag
       if: startsWith(github.ref, 'refs/tags/v')
       uses: softprops/action-gh-release@v2
       with:
-        files: /home/runner/work/Engine/Engine/build/App/ore
+        files: /home/runner/work/Engine/Engine/build/App/ore-linux
       env:
         GITHUB_TOKEN: ${{ secrets.UPLOAD_RELEASE }}
