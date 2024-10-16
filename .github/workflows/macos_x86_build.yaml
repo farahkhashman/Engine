@@ -7,25 +7,11 @@ on:
        - 'v*'
   release:
    types: [published]
-  pull_request:
-    branches: [master]
-    types: [ready_for_review, opened, synchronize, reopened]
-    paths:
-      - .github/workflows/macos_ARM64_build.yaml
-      - ./App/**
-      - ./OREAnalytics/**
-      - '!./OREAnalytics/doc/**'
-      - ./OREData/**
-      - '!./OREData/doc/**'
-      - ./ORETest/**
-      - ./QuantExt/**
-      - '!./QuantExt/doc/**'
-      - CMakeLists.txt
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: macos-11
+    runs-on: macos-13
     steps:
     - uses: actions/checkout@v4
     - name: get QuantLib
@@ -33,11 +19,11 @@ jobs:
         git submodule update --init
     - name: Install Boost
       run: |
-        curl -O -L https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz
-        tar xfz boost_1_80_0.tar.gz
-        cd boost_1_80_0
+        curl -O -L https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_1_84_0.tar.gz
+        tar xfz boost_1_84_0.tar.gz
+        cd boost_1_84_0
         ./bootstrap.sh
-        ./b2 toolset=clang-darwin target-os=darwin architecture=x86 cxxflags="-arch x86_64" cflags="-arch x86_64" linkflags="-arch x86_64" abi=sysv binary-format=mach-o install
+        ./b2 architecture=arm address-model=64 -s NO_LZMA=1 -s NO_ZSTD=1 abi=aapcs install
     - name: cmake configure and build
       run: |
         mkdir build
@@ -46,7 +32,18 @@ jobs:
         cmake --build . -j4
         cmake --install .
     - name: Save executables as artifacts
+      if: startsWith(github.ref, 'refs/tags/v')
       uses: actions/upload-artifact@v4
       with:
         name: ore-macos-x86
         path: /Users/runner/work/Engine/Engine/build/App/ore
+    - name: Rename executable to match system
+      run: mv "/Users/runner/work/Engine/Engine/build/App/ore" "/Users/runner/work/Engine/Engine/build/App/ore-macos-x86"
+    - name: Release executables to tag
+      if: startsWith(github.ref, 'refs/tags/v')
+      uses: softprops/action-gh-release@v2
+      with:
+        name: ${{ github.ref_name }}
+        files: /Users/runner/work/Engine/Engine/build/App/ore-macos-x86
+      env:
+        GITHUB_TOKEN: ${{ secrets.UPLOAD_RELEASE }}

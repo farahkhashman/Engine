@@ -1,6 +1,12 @@
 name: C/C++ CI Windows
 
 on:
+  push:
+    branches: [master]
+    tags:
+       - 'v*'
+  release:
+   types: [published]
   workflow_dispatch:
 
 jobs:
@@ -43,8 +49,18 @@ jobs:
         cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DQL_BUILD_EXAMPLES=false -DQL_BUILD_TEST_SUITE=false -DQL_BUILD_BENCHMARK=false -DQL_ENABLE_SESSIONS=true -DORE_BUILD_DOC=false -DBOOST_INCLUDEDIR=C:\local\boost -DBOOST_LIBRARYDIR=C:\local\boost\lib${{ matrix.boost-lib }}-msvc-14.2 -L
         cmake --build . -j 2 --verbose
     - name: Save executables as artifacts
-      #if: startsWith(github.ref, 'refs/tags/v')
+      if: startsWith(github.ref, 'refs/tags/v')
       uses: actions/upload-artifact@v4
       with:
         name: ore-windows-${{ matrix.arch }}
         path: D:\a\Engine\Engine\build\App\ore.exe
+    - name: Rename executable to match system
+      run: mv "D:\a\Engine\Engine\build\App\ore.exe" "D:\a\Engine\Engine\build\App\ore-windows-${{ matrix.arch }}.exe"
+    - name: Release executables to tag
+      if: startsWith(github.ref, 'refs/tags/v')
+      uses: softprops/action-gh-release@v2
+      with:
+        name: ${{ github.ref_name }}
+        files: D:\a\Engine\Engine\build\App\ore-windows-${{ matrix.arch }}.exe
+      env:
+        GITHUB_TOKEN: ${{ secrets.UPLOAD_RELEASE }}
