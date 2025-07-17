@@ -28,6 +28,8 @@
 #include <ql/math/matrixutilities/symmetricschurdecomposition.hpp>
 
 #include <regex>
+#include <boost/thread/shared_mutex.hpp>
+#include <boost/thread/lock_types.hpp>
 
 using namespace QuantLib;
 using namespace ore::data;
