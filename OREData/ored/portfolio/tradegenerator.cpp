@@ -227,6 +227,54 @@ void TradeGenerator::buildSwap(string indexId, Real notional, string maturity, s
     return;
 }
 
+void TradeGenerator::buildFixedLeg(string indexId, Real notional, string maturity, Real rate, string start, string tradeId) {
+    QuantLib::ext::shared_ptr<Convention> conv = conventions_.at(indexId);
+    QuantLib::ext::shared_ptr<IborIndex> iborIndex;
+    tryParseIborIndex(indexId, iborIndex);
+    string cal;
+    string rule;
+    string convention;
+    string ccy;
+    string fixedFreq;
+    string fixedDC;
+    string type;
+    string forwardStart = start.empty() ? "0D" : start;
+    LegData floatingLeg = buildLeg(conv, notional, maturity, forwardStart, true);
+    switch (conv->type()) {
+        case Convention::Type::OIS: {
+            fixedFreq = frequencyToTenor(QuantLib::ext::dynamic_pointer_cast<OisConvention>(conv)->fixedFrequency());
+            fixedDC = to_string(QuantLib::ext::dynamic_pointer_cast<OisConvention>(conv)->fixedDayCounter());
+            type = "OIS";
+            break;
+        }
+        case Convention::Type::Swap: {
+            fixedFreq = frequencyToTenor(QuantLib::ext::dynamic_pointer_cast<IRSwapConvention>(conv)->fixedFrequency());
+            fixedDC = to_string(QuantLib::ext::dynamic_pointer_cast<IRSwapConvention>(conv)->fixedDayCounter());
+            type = "IBOR";
+            break;
+        }
+        default:
+        {
+            DLOG("Convention type " + to_string(conv->type()) + " not yet supported");
+        }
+    }
+    cal = floatingLeg.schedule().rules().front().calendar();
+    rule = floatingLeg.schedule().rules().front().rule();
+    string startDate = floatingLeg.schedule().rules().front().startDate();
+    ScheduleData fixedSchedule(ScheduleRules(startDate, floatingLeg.schedule().rules().back().endDate(), fixedFreq, cal, convention, convention, rule));
+    vector<Real> rates(1, rate);
+    ccy = floatingLeg.currency();
+    LegData fixedLeg(QuantLib::ext::make_shared<FixedLegData>(rates), true, ccy, fixedSchedule, fixedDC,
+    floatingLeg.notionals());
+    Envelope env = makeEnvelope();
+    vector<LegData> v;
+    v.push_back(fixedLeg);
+    QuantLib::ext::shared_ptr<Swap> trade(QuantLib::ext::make_shared<Swap>( ore::data::Swap(env, v)));
+    trade->id() = !tradeId.empty() ? tradeId : to_string(size() + 1) + "_" + ccy + "_" + type + "_SWAP";
+    add(trade);
+    return;
+}
+
 void TradeGenerator::buildInflationSwap(string inflationIndex, Real notional, string maturity, string floatIndex,
                                         Real baseRate, Real cpiRate, bool firstLegPays,
                                         string tradeId) {
