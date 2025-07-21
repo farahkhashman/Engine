@@ -66,6 +66,7 @@ public:
                    string start = string(), string tradeId = string());
     void buildSwap(string indexId, Real notional, string maturity, string recIndexId, Real spread, bool firstLegPays,
                    string start = string(), string tradeId = string(), std::map<string, string> mapPairs = {});
+    void buildFixedLeg(string indexId, Real notional, string maturity, Real rate, string start, string tradeId);
     void buildFxForward(string payCcy, Real payNotional, string recCcy, Real recNotional, string expiryDate,
                         bool isLong, string tradeId = "", std::map<string, string> mapPairs = {});
     void buildFxOption(string payCcy, Real payNotional, string recCcy, Real recNotional, string expiryDate, bool isLong,
