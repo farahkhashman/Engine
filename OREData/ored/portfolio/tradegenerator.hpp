@@ -64,9 +64,16 @@ public:
     bool validateDate(string date);
     void buildSwap(string indexId, Real notional, string maturity, Real rate, bool firstLegPays,
                    string start = string(), string tradeId = string());
+    void buildSwapNotionalEx(string indexId, Real notional, string maturity, Real rate, bool firstLegPays,
+                   string start = string(), string tradeId = string());
     void buildSwap(string indexId, Real notional, string maturity, string recIndexId, Real spread, bool firstLegPays,
                    string start = string(), string tradeId = string(), std::map<string, string> mapPairs = {});
-    void buildFixedLeg(string indexId, Real notional, string maturity, Real rate, string start, string tradeId);
+    void buildSwapNotionalEx(string indexId, Real notional, string maturity, string recIndexId, Real spread, bool firstLegPays,
+                   string start = string(), string tradeId = string(), std::map<string, string> mapPairs = {});
+    void buildFixedLeg(string indexId, Real notional, string maturity, Real rate,
+                   string start = string(), string tradeId = string());
+    void buildFixedLegNotionalEx(string indexId, Real notional, string maturity, Real rate,
+                   string start = string(), string tradeId = string());
     void buildFxForward(string payCcy, Real payNotional, string recCcy, Real recNotional, string expiryDate,
                         bool isLong, string tradeId = "", std::map<string, string> mapPairs = {});
     void buildFxOption(string payCcy, Real payNotional, string recCcy, Real recNotional, string expiryDate, bool isLong,
@@ -102,14 +109,16 @@ private:
     void setup(string startDate = "");
     string getEndDate(string maturity, string startDate, Calendar cal = QuantLib::NullCalendar());
     LegData buildLeg(QuantLib::ext::shared_ptr<Convention> conv, Real notional, string maturity, string start,
-                     bool isPayer);
+                     bool isPayer, bool notionalExchange = false);
     string frequencyToTenor(const QuantLib::Frequency& freq);
     LegData buildCPILeg(QuantLib::ext::shared_ptr<Convention> conv, Real notional, string maturity, string currency,
-                        Real baseRate, Real cpiRate, bool isPayer, std::map<string, string> mapPairs = {});
+                        Real baseRate, Real cpiRate, bool isPayer, bool notionalExchange = false, std::map<string, string> mapPairs = {});
     LegData buildOisLeg(QuantLib::ext::shared_ptr<Convention> conv, Real notional, string maturity, string start,
-                        bool isPayer, std::map<string, string> mapPairs = {});
+                        bool isPayer, bool notionalExchange = false, std::map<string, string> mapPairs = {});
     LegData buildIborLeg(QuantLib::ext::shared_ptr<Convention> conv, Real notional, string maturity, string start,
-                         bool isPayer, std::map<string, string> mapPairs = {});
+                         bool isPayer, bool notionalExchange = false, std::map<string, string> mapPairs = {});
+    LegData buildSingelFixedLeg(QuantLib::ext::shared_ptr<Convention> conv, Real notional, string maturity,
+                   string start, bool isPayer, Real rate, bool notionalExchange = false, std::map<string, string> mapPairs = {});
     map<string, string> fetchEquityRefData(string equityId);
     Envelope makeEnvelope();
     void addConventions();
