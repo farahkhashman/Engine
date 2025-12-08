@@ -1173,6 +1173,8 @@ public:
     BusinessDayConvention infConvention() const { return infConvention_; }
     PublicationRoll publicationRoll() const { return publicationRoll_; }
     const Schedule& publicationSchedule() const { return publicationSchedule_; }
+	int startDelay() const { return startDelay_; }
+    BusinessDayConvention startDelayConvention() const { return startDelayConvention_; } 
 
     virtual void fromXML(XMLNode* node) override;
     virtual XMLNode* toXML(XMLDocument& doc) const override;
@@ -1189,6 +1191,8 @@ private:
     Calendar infCalendar_;
     BusinessDayConvention infConvention_;
     Schedule publicationSchedule_;
+    int startDelay_ = 0;
+    BusinessDayConvention startDelayConvention_ = BusinessDayConvention::Following;
 
     // Store the inputs
     string strFixCalendar_;
@@ -1200,6 +1204,7 @@ private:
     string strAdjustInfObsDates_;
     string strInfCalendar_;
     string strInfConvention_;
+    string strStartDelayConvention_;
     PublicationRoll publicationRoll_;
     QuantLib::ext::shared_ptr<ScheduleData> publicationScheduleData_;
 };
