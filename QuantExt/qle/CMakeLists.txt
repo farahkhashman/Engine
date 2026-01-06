@@ -435,6 +435,7 @@ termstructures/yoyoptionletsurfacestripper.cpp
 termstructures/yoypricesurfacefromvols.cpp
 time/dateutilities.cpp
 time/yearcounter.cpp
+time/monthcounter.cpp
 utilities/barrier.cpp
 utilities/cashflows.cpp
 utilities/commodity.cpp
@@ -1065,6 +1066,7 @@ termstructures/zeroinflationcurveobserverstatic.hpp
 time/dateutilities.hpp
 time/futureexpirycalculator.hpp
 time/yearcounter.hpp
+time/monthcounter.hpp
 utilities/barrier.hpp
 utilities/cashflows.hpp
 utilities/commodity.hpp
