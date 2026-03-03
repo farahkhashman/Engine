@@ -1,5 +1,3 @@
-# cpp files, this list is maintained manually
-
 set(QuantExt_SRC ad/computationgraph.cpp
 ad/external_randomvariable_ops.cpp
 ad/ssaform.cpp
@@ -178,7 +176,6 @@ methods/fdmblackscholesmesher.cpp
 methods/fdmblackscholesop.cpp
 methods/fdmdefaultableequityjumpdiffusionfokkerplanckop.cpp
 methods/fdmdefaultableequityjumpdiffusionop.cpp
-methods/fdmhestonop.cpp
 methods/fdmlgmop.cpp
 methods/fdmquantohelper.cpp
 methods/irdeltaparconverter.cpp
@@ -217,8 +214,6 @@ models/fxbsconstantparametrization.cpp
 models/fxbsparametrization.cpp
 models/fxbspiecewiseconstantparametrization.cpp
 models/fxeqoptionhelper.cpp
-models/fxlvmodel.cpp
-models/fxlvparametrization.cpp
 models/gaussian1dcrossassetadaptor.cpp
 models/gaussianlhplossmodel.cpp
 models/hullwhitebucketing.cpp
@@ -342,12 +337,8 @@ pricingengines/volatilityfromvarianceswapengine.cpp
 processes/commodityschwartzstateprocess.cpp
 processes/crcirppstateprocess.cpp
 processes/crossassetstateprocess.cpp
-processes/hestonprocess.cpp
 processes/irhwstateprocess.cpp
 processes/irlgm1fstateprocess.cpp
-processes/multiassetquantohestonprocess.cpp
-processes/ptdhestonprocess.cpp
-processes/quantohestonprocess.cpp
 python_integration/pythonfunctions.cpp
 quotes/logquote.cpp
 termstructures/aposurface.cpp
@@ -416,7 +407,6 @@ termstructures/proxyoptionletvolatility.cpp
 termstructures/proxyswaptionvolatility.cpp
 termstructures/sabrparametricvolatility.cpp
 termstructures/scenario.cpp
-termstructures/simplemclocalvolstochasticratescorrection.cpp
 termstructures/spreadedblackvolatilitycurve.cpp
 termstructures/spreadedblackvolatilitysurfacemoneyness.cpp
 termstructures/spreadedcorrelationcurve.cpp
@@ -447,12 +437,10 @@ time/dateutilities.cpp
 time/monthcounter.cpp
 time/yearcounter.cpp
 utilities/barrier.cpp
-utilities/callablebond.cpp
 utilities/cashflows.cpp
 utilities/commodity.cpp
 utilities/creditcurves.cpp
 utilities/creditindexconstituentcurvecalibration.cpp
-utilities/fairrate.cpp
 utilities/inflation.cpp
 utilities/ratehelpers.cpp
 utilities/time.cpp)
@@ -722,7 +710,6 @@ methods/fdmblackscholesmesher.hpp
 methods/fdmblackscholesop.hpp
 methods/fdmdefaultableequityjumpdiffusionfokkerplanckop.hpp
 methods/fdmdefaultableequityjumpdiffusionop.hpp
-methods/fdmhestonop.hpp
 methods/fdmlgmop.hpp
 methods/fdmquantohelper.hpp
 methods/irdeltaparconverter.hpp
@@ -743,6 +730,7 @@ models/cirppconstantfellerparametrization.hpp
 models/cirppconstantparametrization.hpp
 models/cirppimplieddefaulttermstructure.hpp
 models/cirppparametrization.hpp
+models/crlgmvectorised.hpp
 models/cmscaphelper.hpp
 models/commoditymodel.hpp
 models/commodityschwartzconstantparametrization.hpp
@@ -753,7 +741,6 @@ models/constantlosslatentmodel.hpp
 models/cpicapfloorhelper.hpp
 models/crcirpp.hpp
 models/crlgm1fparametrization.hpp
-models/crlgmvectorised.hpp
 models/crossassetanalytics.hpp
 models/crossassetanalyticsbase.hpp
 models/crossassetmodel.hpp
@@ -777,8 +764,6 @@ models/fxbsmodel.hpp
 models/fxbsparametrization.hpp
 models/fxbspiecewiseconstantparametrization.hpp
 models/fxeqoptionhelper.hpp
-models/fxlvmodel.hpp
-models/fxlvparametrization.hpp
 models/fxmodel.hpp
 models/gaussian1dcrossassetadaptor.hpp
 models/gaussianlhplossmodel.hpp
@@ -926,12 +911,8 @@ pricingengines/volatilityfromvarianceswapengine.hpp
 processes/commodityschwartzstateprocess.hpp
 processes/crcirppstateprocess.hpp
 processes/crossassetstateprocess.hpp
-processes/hestonprocess.hpp
 processes/irhwstateprocess.hpp
 processes/irlgm1fstateprocess.hpp
-processes/multiassetquantohestonprocess.hpp
-processes/ptdhestonprocess.hpp
-processes/quantohestonprocess.hpp
 python_integration/pythonfunctions.hpp
 quotes/basecorrelationquote.hpp
 quotes/compositevectorquote.hpp
@@ -1005,7 +986,6 @@ termstructures/hazardspreadeddefaulttermstructure.hpp
 termstructures/iborfallbackcurve.hpp
 termstructures/immfraratehelper.hpp
 termstructures/implieddefaulttermstructure.hpp
-termstructures/impliedtermstructure.hpp
 termstructures/inflation/constantcpivolatility.hpp
 termstructures/inflation/cpicurve.hpp
 termstructures/inflation/cpipricevolatilitysurface.hpp
@@ -1046,7 +1026,6 @@ termstructures/proxyswaptionvolatility.hpp
 termstructures/sabrparametricvolatility.hpp
 termstructures/sabrstrippedoptionletadapter.hpp
 termstructures/scenario.hpp
-termstructures/simplemclocalvolstochasticratescorrection.hpp
 termstructures/spreadedblackvolatilitycurve.hpp
 termstructures/spreadedblackvolatilitysurfacemoneyness.hpp
 termstructures/spreadedcorrelationcurve.hpp
@@ -1096,7 +1075,6 @@ utilities/cashflows.hpp
 utilities/commodity.hpp
 utilities/creditcurves.hpp
 utilities/creditindexconstituentcurvecalibration.hpp
-utilities/fairrate.hpp
 utilities/inflation.hpp
 utilities/interpolation.hpp
 utilities/localiborcouponsettings.hpp
@@ -1108,6 +1086,7 @@ utilities/serializationdate.hpp
 utilities/serializationperiod.hpp
 utilities/time.hpp
 version.hpp)
+
 
 add_custom_command(
     OUTPUT ${CMAKE_CURRENT_LIST_DIR}/gitversion.hpp
