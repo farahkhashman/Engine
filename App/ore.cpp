@@ -16,7 +16,7 @@
  FITNESS FOR A PARTICULAR PURPOSE. See the license for more details.
 */
 
-#ifdef BOOST_MSVC
+#if !defined(BOOST_ALL_NO_LIB) && defined(BOOST_MSVC)
 // disable warning C4503: '__LINE__Var': decorated name length exceeded, name was truncated
 // This pragma statement needs to be at the top of the file - lower and it will not work:
 // http://stackoverflow.com/questions/9673504/is-it-possible-to-disable-compiler-warning-c4503
