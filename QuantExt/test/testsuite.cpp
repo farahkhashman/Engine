@@ -24,7 +24,6 @@
 #include <iomanip>
 #include <iostream>
 
-#include <oret/config.hpp>
 
 // Boost.Test
 #define BOOST_TEST_MODULE "QuantExtTestSuite"
@@ -50,7 +49,7 @@ using boost::unit_test::framework::master_test_suite;
 
 #include "toplevelfixture.hpp"
 
-#ifdef BOOST_MSVC
+#if !defined(BOOST_ALL_NO_LIB) && defined(BOOST_MSVC)
 #include <ql/auto_link.hpp>
 #include <qle/auto_link.hpp>
 #define BOOST_LIB_NAME boost_system
