@@ -43,7 +43,6 @@ app/analytics/sensitivitystressanalytic.cpp
 app/analytics/simmanalytic.cpp
 app/analytics/smrcanalytic.cpp
 app/analytics/stresstestanalytic.cpp
-app/analytics/utilities.cpp
 app/analytics/varanalytic.cpp
 app/analytics/xvaanalytic.cpp
 app/analytics/xvaexplainanalytic.cpp
@@ -55,7 +54,6 @@ app/cleanupsingletons.cpp
 app/hwhistoricalcalibrationdataloader.cpp
 app/initbuilders.cpp
 app/inputparameters.cpp
-app/inputvariables.cpp
 app/marketcalibrationreport.cpp
 app/marketdatacsvloader.cpp
 app/marketdatainmemoryloader.cpp
@@ -259,7 +257,6 @@ app/analytics/sensitivitystressanalytic.hpp
 app/analytics/simmanalytic.hpp
 app/analytics/smrcanalytic.hpp
 app/analytics/stresstestanalytic.hpp
-app/analytics/utilities.hpp
 app/analytics/varanalytic.hpp
 app/analytics/xvaanalytic.hpp
 app/analytics/xvaexplainanalytic.hpp
@@ -272,7 +269,6 @@ app/dummymarketdataloader.hpp
 app/hwhistoricalcalibrationdataloader.hpp
 app/initbuilders.hpp
 app/inputparameters.hpp
-app/inputvariables.hpp
 app/marketcalibrationreport.hpp
 app/marketdatabinaryloader.hpp
 app/marketdatacsvloader.hpp
@@ -448,6 +444,7 @@ simm/utilities.hpp
 simulation/fixingmanager.hpp
 simulation/simmarket.hpp
 version.hpp)
+
 
 writeAll("orea" "${CMAKE_CURRENT_LIST_DIR}/orea.hpp" "auto_link.hpp" "${OREAnalytics_HDR}")
 add_library(${OREA_LIB_NAME} ${OREAnalytics_SRC} ${OREAnalytics_HDR} "orea.hpp")
