@@ -87,10 +87,7 @@ model/eqbsbuilder.cpp
 model/eqbsdata.cpp
 model/fxbsbuilder.cpp
 model/fxbsdata.cpp
-model/fxdata.cpp
-model/fxlvdata.cpp
 model/hestonmodelbuilder.cpp
-model/hestonmodelcalibration.cpp
 model/hwbuilder.cpp
 model/hwhistoricalcalibrationmodelbuilder.cpp
 model/hwhistoricalcalibrationmodeldata.cpp
@@ -167,7 +164,6 @@ portfolio/builders/creditlinkedswap.cpp
 portfolio/builders/currencyswap.cpp
 portfolio/builders/deltagammaengines.cpp
 portfolio/builders/durationadjustedcms.cpp
-portfolio/builders/equity.cpp
 portfolio/builders/equityasianoption.cpp
 portfolio/builders/equitybarrieroption.cpp
 portfolio/builders/equitycompositeoption.cpp
@@ -314,7 +310,6 @@ portfolio/scriptedtrade.cpp
 portfolio/strikeresettableoption.cpp
 portfolio/swap.cpp
 portfolio/swaption.cpp
-portfolio/swaptionstraddle.cpp
 portfolio/tarf.cpp
 portfolio/tlockdata.cpp
 portfolio/trade.cpp
@@ -506,10 +501,7 @@ model/eqbsbuilder.hpp
 model/eqbsdata.hpp
 model/fxbsbuilder.hpp
 model/fxbsdata.hpp
-model/fxdata.hpp
-model/fxlvdata.hpp
 model/hestonmodelbuilder.hpp
-model/hestonmodelcalibration.hpp
 model/hwbuilder.hpp
 model/hwhistoricalcalibrationmodelbuilder.hpp
 model/hwhistoricalcalibrationmodeldata.hpp
@@ -590,7 +582,6 @@ portfolio/builders/creditlinkedswap.hpp
 portfolio/builders/currencyswap.hpp
 portfolio/builders/deltagammaengines.hpp
 portfolio/builders/durationadjustedcms.hpp
-portfolio/builders/equity.hpp
 portfolio/builders/equityasianoption.hpp
 portfolio/builders/equitybarrieroption.hpp
 portfolio/builders/equitycompositeoption.hpp
@@ -746,7 +737,6 @@ portfolio/structuredtradeerror.hpp
 portfolio/structuredtradewarning.hpp
 portfolio/swap.hpp
 portfolio/swaption.hpp
-portfolio/swaptionstraddle.hpp
 portfolio/tarf.hpp
 portfolio/tlockdata.hpp
 portfolio/trade.hpp
@@ -850,6 +840,7 @@ utilities/vectorutils.hpp
 utilities/wildcard.hpp
 utilities/xmlutils.hpp
 version.hpp)
+
 
 writeAll("ored" "${CMAKE_CURRENT_LIST_DIR}/ored.hpp" "auto_link.hpp" "${OREData_HDR}")
 add_library(${ORED_LIB_NAME} ${OREData_SRC} ${OREData_HDR} "ored.hpp")
