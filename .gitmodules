@@ -1,6 +1,6 @@
 [submodule "QuantLib"]
 	path = QuantLib
-	url = https://github.com/OpenSourceRisk/QuantLib
+	url = https://github.com/farahkhashman/QuantLib.git
 	branch = master
 	ignore = dirty
 [submodule "ORE-SWIG/QuantLib-SWIG"]
