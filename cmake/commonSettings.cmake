@@ -182,6 +182,7 @@ else()
         $<$<AND:$<BOOL:${QL_USE_PCH}>,$<CXX_COMPILER_ID:GNU>>:-fpch-preprocess>
         $<$<CXX_COMPILER_ID:${clangs_to_check}>:-Wsometimes-uninitialized>
         $<$<CXX_COMPILER_ID:GNU>:-Wmaybe-uninitialized>
+        $<$<CXX_COMPILER_ID:GNU>:-Wno-error=maybe-uninitialized>
         $<$<CXX_COMPILER_ID:${clangs_to_check}>:-Wunused-lambda-capture>
         $<$<CXX_COMPILER_ID:${clangs_to_check}>:-Winconsistent-missing-override>
     )
@@ -511,13 +512,14 @@ else()
         -Werror=return-type
         -Werror=unused-function
         -Wno-unknown-pragmas
-        --system-header-prefix=boost/
+        $<$<CXX_COMPILER_ID:${clangs_to_check}>:--system-header-prefix=boost/>
         -Werror=unused-variable
         -Werror=uninitialized
         "$<$<AND:$<BOOL:${QL_USE_PCH}>,$<CXX_COMPILER_ID:${clangs_to_check}>>:SHELL:-Xclang -fno-pch-timestamp>"
         $<$<AND:$<BOOL:${QL_USE_PCH}>,$<CXX_COMPILER_ID:GNU>>:-fpch-preprocess>
         $<$<CXX_COMPILER_ID:${clangs_to_check}>:-Wsometimes-uninitialized>
         $<$<CXX_COMPILER_ID:GNU>:-Wmaybe-uninitialized>
+        $<$<CXX_COMPILER_ID:GNU>:-Wno-error=maybe-uninitialized>
         $<$<CXX_COMPILER_ID:${clangs_to_check}>:-Wunused-lambda-capture>
         $<$<CXX_COMPILER_ID:${clangs_to_check}>:-Winconsistent-missing-override>
     )
