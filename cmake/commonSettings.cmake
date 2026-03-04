@@ -559,7 +559,12 @@ endif()
 set(Boost_NO_WARN_NEW_VERSIONS ON)
 
 # Find Boost components.
-list(APPEND BOOST_COMPONENT_LIST filesystem serialization timer log iostreams thread)
+if(ORE_USE_ZLIB AND MSVC)
+    list(APPEND BOOST_COMPONENT_LIST filesystem serialization timer log iostreams thread zlib)
+else()
+    list(APPEND BOOST_COMPONENT_LIST filesystem serialization timer log iostreams thread)
+endif()
+    
 find_package(Boost REQUIRED COMPONENTS ${BOOST_COMPONENT_LIST})
 
 if (MSVC)
