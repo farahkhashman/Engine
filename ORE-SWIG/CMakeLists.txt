@@ -60,6 +60,9 @@ target_link_libraries(OREP PRIVATE ${OREA_LIB_NAME} Boost::iostreams)
 if(ORE_USE_ZLIB)
     target_link_libraries(OREP PRIVATE ZLIB::ZLIB)
     target_compile_definitions(OREP PRIVATE ORE_USE_ZLIB)
+    if(MSVC)
+        target_link_libraries(OREP PRIVATE Boost::zlib)
+    endif()
 endif()
 
 # On windows, do not tell the build which python libs to use.  It automatically 
