@@ -1137,14 +1137,17 @@ if (ORE_ENABLE_CUDA)
 endif()
 
 if (ORE_PYTHON_INTEGRATION)
-    # manylinux environments do not have Development.Embed which will cause failure, but all other platforms require it
-    if(MANYLINUX)
-        find_package(Python REQUIRED COMPONENTS Interpreter Development.Module)
-    else()
-        find_package(Python REQUIRED COMPONENTS Interpreter Development)
-    endif()
-    target_link_libraries(${QLE_LIB_NAME} PUBLIC Python::Python)
-    target_compile_definitions(${QLE_LIB_NAME} PRIVATE ORE_PYTHON_INTEGRATION)
+   # manylinux environments do not have Development.Embed which will cause failure, but all other platforms require it
+   if(MANYLINUX)
+       find_package(Python REQUIRED COMPONENTS Interpreter Development.Module)
+       # Use the Module target for manylinux extension modules
+       target_link_libraries(QuantExt PUBLIC Python::Module)
+   else()
+       find_package(Python REQUIRED COMPONENTS Interpreter Development)
+       # Use the Python (Embed) target for standard builds
+       target_link_libraries(QuantExt PUBLIC Python::Python)
+   endif()
+   target_compile_definitions(${QLE_LIB_NAME} PRIVATE ORE_PYTHON_INTEGRATION)
 endif()
 
 # ORE_EIGEN_WAS_FOUND is recorded here to be used in OreConfig.cmake.in.
