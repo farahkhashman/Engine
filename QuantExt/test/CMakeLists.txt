@@ -60,7 +60,6 @@ formulabasedcoupon.cpp
 forwardbond.cpp
 fxvolsmile.cpp
 fxvoltimeweighting.cpp
-generictest.cpp
 hullwhitebucketing.cpp
 hwpiecewiseparametrization.cpp
 index.cpp
@@ -85,7 +84,6 @@ pricecurve.cpp
 pricetermstructureadapter.cpp
 qle_calendars.cpp
 quadraticinterpolation.cpp
-quantohestonprocess.cpp
 randomvariable.cpp
 randomvariablelsmbasissystem.cpp
 ratehelpers.cpp
