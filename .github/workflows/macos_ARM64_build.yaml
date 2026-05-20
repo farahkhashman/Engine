@@ -13,18 +13,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - python-wheel: "cp38"
-            python-version: "3.8"
-          - python-wheel: "cp39"
-            python-version: "3.9"
           - python-wheel: "cp310"
             python-version: "3.10"
           - python-wheel: "cp311"
             python-version: "3.11"
           - python-wheel: "cp312"
             python-version: "3.12"
-          - python-wheel: "cp313"
-            python-version: "3.13"
     steps:
     - uses: actions/checkout@v5
       with:
