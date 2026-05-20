@@ -267,7 +267,7 @@ class my_build_ext(build_ext):
             extra_compile_args = [ arg for arg in ql_compile_args
                                    if not arg.startswith('-D')
                                    if not arg.startswith('-I') ] \
-                                   + [ '-Wno-unused' ] + ['-std=c++20']
+                                   + [ '-Wno-unused' ] + ['-std=c++20'] + ["-Wl,-headerpad_max_install_names"]
             if 'CXXFLAGS' in os.environ:
                 extra_compile_args += os.environ['CXXFLAGS'].split()
 
