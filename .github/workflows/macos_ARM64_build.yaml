@@ -15,10 +15,6 @@ jobs:
         include:
           - python-wheel: "cp310"
             python-version: "3.10"
-          - python-wheel: "cp311"
-            python-version: "3.11"
-          - python-wheel: "cp312"
-            python-version: "3.12"
     steps:
     - uses: actions/checkout@v5
       with:
@@ -73,7 +69,7 @@ jobs:
         pwd
         python setup.py wrap
     - name: Build Wheels
-      uses: pypa/cibuildwheel@v2.22.0
+      uses: pypa/cibuildwheel@v3.3.0
       env:
         #CIBW_SKIP: cp36-*
         CIBW_BUILD: ${{ matrix.python-wheel }}-*
