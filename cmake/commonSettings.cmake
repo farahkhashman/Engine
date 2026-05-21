@@ -167,7 +167,7 @@ else()
     set(clangs_to_check "AppleClang")
     add_link_options(
         -pthread
-        $<$<AND:$<BOOL:${APPLE}>,$<CXX_COMPILER_ID:${clangs_to_check}>>:-flat_namespace,-Wl,-headerpad_max_install_name>
+        $<$<AND:$<BOOL:${APPLE}>,$<CXX_COMPILER_ID:${clangs_to_check}>>:-Wl,-flat_namespace,-Wl,-headerpad_max_install_name>
     )
 
     add_compile_options(
