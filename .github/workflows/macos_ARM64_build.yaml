@@ -8,13 +8,13 @@ on:
 
 jobs:
   build:
-    runs-on: macos-14
+    runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
         include:
-          - python-wheel: "cp314"
-            python-version: "3.14"
+          - python-wheel: "cp310"
+            python-version: "3.10"
     steps:
     - uses: actions/checkout@v5
       with:
