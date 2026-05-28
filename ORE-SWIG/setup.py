@@ -273,7 +273,8 @@ class my_build_ext(build_ext):
 
             extra_link_args = [ arg for arg in ql_link_args
                                 if not arg.startswith('-L')
-                                if not arg.startswith('-l') ]
+                                if not arg.startswith('-l') ] \
+                                + ['-headerpad_max_install_names']
             if 'LDFLAGS' in os.environ:
                 extra_link_args += os.environ['LDFLAGS'].split()
 
