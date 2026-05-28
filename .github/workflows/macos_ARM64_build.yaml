@@ -75,9 +75,9 @@ jobs:
         CIBW_BUILD: ${{ matrix.python-wheel }}-*
         #CIBW_BUILD: cp311-macosx_arm64
         CIBW_ARCHS_MACOS: arm64
-        MACOSX_DEPLOYMENT_TARGET: "14.7"
-        CIBW_ENVIRONMENT: MACOSX_DEPLOYMENT_TARGET=14.7
-        CXXFLAGS: -std=c++20 -g0 -O3 -mmacosx-version-min=14.7
+        MACOSX_DEPLOYMENT_TARGET: "15.0"
+        CIBW_ENVIRONMENT: MACOSX_DEPLOYMENT_TARGET=15.0
+        CXXFLAGS: -std=c++20 -g0 -O3 -mmacosx-version-min=15.0
         CIBW_BUILD_VERBOSITY: 2
         CIBW_REPAIR_WHEEL_COMMAND_MACOS: >
           DYLD_LIBRARY_PATH=/usr/local/lib delocate-listdeps {wheel} &&
