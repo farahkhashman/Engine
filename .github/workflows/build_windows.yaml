@@ -97,7 +97,7 @@ jobs:
         cd ${{ github.workspace }}\ORE-SWIG
         python setup.py wrap
     - name: Build ORE Wheels
-      uses: pypa/cibuildwheel@v2.22.0
+      uses: pypa/cibuildwheel@v3.4.1
       env:
         BOOST: C:\local\boost
         BOOST_LIB64: C:\local\boost\lib${{ matrix.boost-lib }}-msvc-14.3
