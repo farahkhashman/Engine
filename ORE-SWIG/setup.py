@@ -276,6 +276,9 @@ class my_build_ext(build_ext):
             extra_link_args = [ arg for arg in ql_link_args
                                 if not arg.startswith('-L')
                                 if not arg.startswith('-l') ]
+            if sys.platform.startswith('darwin'):
+                if '-Wl,-headerpad_max_install_names' not in extra_link_args:
+                    extra_link_args.append('-Wl,-headerpad_max_install_names')    
             if 'LDFLAGS' in os.environ:
                 extra_link_args += os.environ['LDFLAGS'].split()
 
