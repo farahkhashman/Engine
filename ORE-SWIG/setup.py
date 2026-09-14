@@ -204,12 +204,14 @@ class my_build_ext(build_ext):
 
             try:
                 self.include_dirs.append(self.validate_path(os.path.join(ORE_BUILD_DIR, "QuantLib")))
+                self.include_dirs.append(self.validate_path(os.path.join(ORE_BUILD_DIR, "QuantExt")))
                 self.library_dirs.append(self.validate_path(os.path.join(ORE_BUILD_DIR, 'QuantLib', 'ql', target)))
                 self.library_dirs.append(self.validate_path(os.path.join(ORE_BUILD_DIR, 'QuantExt', 'qle', target)))
                 self.library_dirs.append(self.validate_path(os.path.join(ORE_BUILD_DIR, 'OREData', 'ored', target)))
                 self.library_dirs.append(self.validate_path(os.path.join(ORE_BUILD_DIR, 'OREAnalytics', 'orea', target)))
             except:
                 self.include_dirs.append(self.validate_path(os.path.join(ORE_BUILD_DIR, "QuantLib")))
+                self.include_dirs.append(self.validate_path(os.path.join(ORE_BUILD_DIR, "QuantExt")))
                 self.library_dirs.append(self.validate_path(os.path.join(ORE_BUILD_DIR, 'QuantLib', 'ql')))
                 self.library_dirs.append(self.validate_path(os.path.join(ORE_BUILD_DIR, 'QuantExt', 'qle')))
                 self.library_dirs.append(self.validate_path(os.path.join(ORE_BUILD_DIR, 'OREData', 'ored')))
